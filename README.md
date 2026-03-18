@@ -1,73 +1,116 @@
-# React + TypeScript + Vite
+# 🖥️ SyncFlow — Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Interface web do projeto SyncFlow, desenvolvida com **React 19**, **TypeScript** e **Tailwind CSS v4**. Utiliza as versões mais recentes do ecossistema front-end, com pipeline de qualidade configurado via Biome, Husky e Commitlint.
 
-Currently, two official plugins are available:
+> 🔗 Repositório do backend: [SyncFlow-Backend](https://github.com/LeonardoMainardes/SyncFlow-Backend)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## ✨ Destaques técnicos
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **React 19** — versão mais recente do React com as últimas melhorias de performance e concorrência
+- **TypeScript 5.9** — tipagem estática em toda a aplicação
+- **Tailwind CSS v4** — nova versão do Tailwind com engine reescrita (via PostCSS), mais rápida e com menos configuração
+- **Vite 8** — bundler de última geração para desenvolvimento ultra-rápido
+- **Biome** — linter e formatter moderno substituindo ESLint + Prettier em uma única ferramenta
+- **Husky + lint-staged** — garantia de qualidade no pre-commit
+- **Commitlint** — padronização de commits com Conventional Commits
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🛠️ Tecnologias utilizadas
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+![React](https://img.shields.io/badge/React_19-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS_v4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+![Bun](https://img.shields.io/badge/Bun-000000?style=for-the-badge&logo=bun&logoColor=white)
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 🚀 Como rodar localmente
+
+### Pré-requisitos
+
+- [Bun](https://bun.sh/) ou Node.js 18+
+- [SyncFlow-Backend](https://github.com/LeonardoMainardes/SyncFlow-Backend) rodando localmente
+
+### 1. Clone o repositório
+
+```bash
+git clone https://github.com/LeonardoMainardes/SyncFlow-Frontend.git
+cd SyncFlow-Frontend
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Instale as dependências
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+# Com Bun (recomendado)
+bun install
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Ou com npm
+npm install
 ```
+
+### 3. Configure as variáveis de ambiente
+
+Crie um arquivo `.env` na raiz:
+
+```env
+VITE_API_URL=http://localhost:8888
+```
+
+### 4. Inicie o servidor de desenvolvimento
+
+```bash
+# Com Bun
+bun run dev
+
+# Ou com npm
+npm run dev
+```
+
+Acesse `http://localhost:5173` no navegador.
+
+---
+
+## 📁 Estrutura do projeto
+
+```
+src/
+├── components/     # Componentes reutilizáveis da UI
+├── pages/          # Páginas e rotas da aplicação
+├── services/       # Integração com a API do backend
+├── hooks/          # Custom hooks React
+├── types/          # Tipagens TypeScript globais
+└── main.tsx        # Ponto de entrada da aplicação
+```
+
+---
+
+## 🔧 Scripts disponíveis
+
+| Comando | Descrição |
+|---------|-----------|
+| `bun run dev` | Inicia em modo desenvolvimento com HMR |
+| `bun run build` | Gera o build de produção |
+| `bun run preview` | Visualiza o build de produção localmente |
+| `bun run lint` | Verifica o código com Biome |
+| `bun run lint:fix` | Corrige automaticamente os problemas de lint |
+| `bun run format` | Formata o código com Biome |
+
+---
+
+## 🔗 Integração com o backend
+
+Este frontend se comunica com a [API REST do SyncFlow](https://github.com/LeonardoMainardes/SyncFlow-Backend), documentada via Swagger em `http://localhost:8888/docs`.
+
+Certifique-se de ter o backend rodando antes de iniciar o frontend.
+
+---
+
+## 👨‍💻 Autor
+
+Feito por **[Leonardo Mainardes](https://github.com/LeonardoMainardes)**
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white)](https://linkedin.com/in/leonardomainardes)
